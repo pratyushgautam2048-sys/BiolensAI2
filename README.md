@@ -1,6 +1,6 @@
 # BioLens AI — Intelligent Clinical Information Platform
 
-Medora AI is a modern healthcare web application designed to empower patients with AI-assisted translations of medical reports, vision identification of home medical equipment, and an interactive health companion grounded in verified user health dossiers.
+BioLensAI is a modern healthcare web application designed to empower patients with AI-assisted translations of medical reports, vision identification of home medical equipment, and an interactive health companion grounded in verified user health dossiers.
 
 ## Design Aesthetic
 - **Color Palette**: Primary `#18A66A` (Emerald), Dark Green `#0F7F51`, Soft Mint `#EAFFF4`, Neutral Background `#F5FBF7`, Deep Slate `#12201B`.
