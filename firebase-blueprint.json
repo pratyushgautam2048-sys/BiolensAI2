@@ -1,0 +1,194 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with demographics, physiological stats, and emergency contacts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "dateOfBirth": { "type": "string" },
+        "gender": { "type": "string" },
+        "bloodGroup": { "type": "string" },
+        "height": { "type": "string" },
+        "weight": { "type": "string" },
+        "emergencyContact": { "type": "object" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email"]
+    },
+    "MedicalReport": {
+      "title": "MedicalReport",
+      "description": "Uploaded clinical diagnostic reports with extracted parameters and AI explanations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileType": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "reportTitle": { "type": "string" },
+        "reportDate": { "type": "string" },
+        "reportType": { "type": "string" },
+        "uploadedAt": { "type": "string" },
+        "analysisStatus": { "type": "string" },
+        "summary": { "type": "string" },
+        "keyFindings": { "type": "array" },
+        "testResults": { "type": "array" },
+        "whatThisMayMean": { "type": "string" },
+        "questionsForDoctor": { "type": "array" },
+        "generalNextSteps": { "type": "array" },
+        "urgency": { "type": "object" }
+      },
+      "required": ["id", "userId", "reportTitle"]
+    },
+    "EquipmentScan": {
+      "title": "EquipmentScan",
+      "description": "Scanned medical equipment records with AI recognition, usage steps, and safety warnings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "deviceName": { "type": "string" },
+        "category": { "type": "string" },
+        "confidence": { "type": "string" },
+        "confidenceScore": { "type": "number" },
+        "whatIsThis": { "type": "string" },
+        "whatIsItUsedFor": { "type": "string" },
+        "howItWorks": { "type": "string" },
+        "howToUse": { "type": "array" },
+        "requiresProfessionalTraining": { "type": "boolean" },
+        "safetyInformation": { "type": "array" },
+        "manufacturerInfo": { "type": "object" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "deviceName"]
+    },
+    "Medication": {
+      "title": "Medication",
+      "description": "Patient prescription medications with dosage, frequency, and physician instructions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "dosage": { "type": "string" },
+        "frequency": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "status": { "type": "string" },
+        "prescribingDoctor": { "type": "string" },
+        "notes": { "type": "string" },
+        "type": { "type": "string" }
+      },
+      "required": ["id", "userId", "name"]
+    },
+    "MedicalCondition": {
+      "title": "MedicalCondition",
+      "description": "Chronic, acute, or past resolved medical conditions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "dateDiagnosed": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" },
+        "type": { "type": "string" }
+      },
+      "required": ["id", "userId", "name"]
+    },
+    "Allergy": {
+      "title": "Allergy",
+      "description": "Known sensitivities, reactions, and severity levels",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "allergy": { "type": "string" },
+        "reaction": { "type": "string" },
+        "severity": { "type": "string" },
+        "diagnosedDate": { "type": "string" }
+      },
+      "required": ["id", "userId", "allergy"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Clinical visits, scheduled exams, and checkups",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "doctor": { "type": "string" },
+        "specialty": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "location": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "userId", "doctor", "date"]
+    },
+    "TimelineItem": {
+      "title": "TimelineItem",
+      "description": "Chronological patient event feed item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "date": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "badge": { "type": "string" },
+        "referenceId": { "type": "string" }
+      },
+      "required": ["id", "userId", "date", "title"]
+    },
+    "AIConversation": {
+      "title": "AIConversation",
+      "description": "Persisted AI health assistant interaction sessions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "messages": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "entity": "User"
+    },
+    "/users/{userId}/medicalReports/{reportId}": {
+      "entity": "MedicalReport"
+    },
+    "/users/{userId}/equipmentScans/{scanId}": {
+      "entity": "EquipmentScan"
+    },
+    "/users/{userId}/medications/{medicationId}": {
+      "entity": "Medication"
+    },
+    "/users/{userId}/medicalConditions/{conditionId}": {
+      "entity": "MedicalCondition"
+    },
+    "/users/{userId}/allergies/{allergyId}": {
+      "entity": "Allergy"
+    },
+    "/users/{userId}/appointments/{appointmentId}": {
+      "entity": "Appointment"
+    },
+    "/users/{userId}/healthTimeline/{timelineId}": {
+      "entity": "TimelineItem"
+    },
+    "/users/{userId}/aiConversations/{conversationId}": {
+      "entity": "AIConversation"
+    }
+  }
+}

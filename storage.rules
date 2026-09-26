@@ -1,0 +1,47 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Only allow files under 25MB
+    function isValidSize() {
+      return request.resource.size < 25 * 1024 * 1024;
+    }
+
+    // Allowed medical reports: PDF, JPG, PNG, WEBP
+    function isValidReportType() {
+      return request.resource.contentType.matches('application/pdf')
+          || request.resource.contentType.matches('image/jpeg')
+          || request.resource.contentType.matches('image/png')
+          || request.resource.contentType.matches('image/webp');
+    }
+
+    // Allowed equipment images: JPG, PNG, WEBP
+    function isValidImageType() {
+      return request.resource.contentType.matches('image/jpeg')
+          || request.resource.contentType.matches('image/png')
+          || request.resource.contentType.matches('image/webp');
+    }
+
+    // Medical reports storage: users/{userId}/medical-reports/{reportId}/file
+    match /users/{userId}/medical-reports/{reportId}/{fileName} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isValidSize() && isValidReportType();
+      allow delete: if isOwner(userId);
+    }
+
+    // Equipment scans storage: users/{userId}/equipment-scans/{scanId}/{fileName}
+    match /users/{userId}/equipment-scans/{scanId}/{fileName} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isValidSize() && isValidImageType();
+      allow delete: if isOwner(userId);
+    }
+  }
+}

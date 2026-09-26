@@ -1,0 +1,6 @@
+{
+  "name": "Medora AI",
+  "description": "Intelligent medical report analyzer, medical equipment scanner, and personal health companion with calm, trustworthy glassmorphism design.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
