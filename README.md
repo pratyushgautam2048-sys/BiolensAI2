@@ -1,4 +1,4 @@
-# Medora AI — Intelligent Clinical Information Platform
+# BioLens AI — Intelligent Clinical Information Platform
 
 Medora AI is a modern healthcare web application designed to empower patients with AI-assisted translations of medical reports, vision identification of home medical equipment, and an interactive health companion grounded in verified user health dossiers.
 
